@@ -7,6 +7,8 @@ int i=0;
 
 void draw() {
   background(i);
+  
 i++;
+rect(0,0,100,100);
 }
 
