@@ -1,35 +1,32 @@
 char keyBuffer=' ';
-PFont font;
 String buffer;
 PrintWriter currentFile;
+MainView view;
+int slidex=1;
+
 void setup() {
   size(800, 800);
-  font = loadFont("SourceCodePro-Regular-24.vlw");
   buffer = new String();
   currentFile = createWriter("text2.0.txt");
-  background(0);
+  view = new MainView();
 }
-int slidex=1;
-void draw() {
 
-  textFont(font);
-  text(buffer, 20, 24);
+void draw() {
+  view.refresh(buffer);
 }
 
 void keyPressed() {
   keyBuffer=key;
   if (key==8) {
     keyBuffer=' ';  
-  }
-  else{
+  } else {
     buffer+=keyBuffer;
   }
+
   if ( int (key)==10) {
     currentFile.println("");
     currentFile.flush();
-  }
-
-  else {
+  } else {
     currentFile.print(key);
   }
 }
