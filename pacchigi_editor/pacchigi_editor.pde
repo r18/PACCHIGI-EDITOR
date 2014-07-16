@@ -3,6 +3,7 @@ String buffer;
 PrintWriter currentFile;
 MainView view;
 int slidex=1;
+boolean isChanged = false;
 
 void setup() {
   size(800, 800);
@@ -12,7 +13,10 @@ void setup() {
 }
 
 void draw() {
-  view.refresh(buffer);
+  if(isChanged){
+    view.refresh(buffer);
+    isChanged = false;
+  }
 }
 
 void keyPressed() {
@@ -29,6 +33,7 @@ void keyPressed() {
   } else {
     currentFile.print(key);
   }
+  isChanged = true;
 }
 
 void stop() {
