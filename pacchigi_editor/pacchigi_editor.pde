@@ -1,39 +1,39 @@
-char keydate=' ';
+char keyBuffer=' ';
 PFont font;
-String date;
-PrintWriter output;
+String buffer;
+PrintWriter currentFile;
 void setup() {
   size(800, 800);
   font = loadFont("SourceCodePro-Regular-24.vlw");
-  date = new String();
-  output = createWriter("text2.0.txt");
+  buffer = new String();
+  currentFile = createWriter("text2.0.txt");
   background(0);
 }
 int slidex=1;
 void draw() {
 
   textFont(font);
-  text(date, 20, 24);
+  text(buffer, 20, 24);
 }
 
 void keyPressed() {
-  keydate=key;
-   if (key==8) {
-    keydate=' ';  
+  keyBuffer=key;
+  if (key==8) {
+    keyBuffer=' ';  
   }
   else{
-  date+=keydate;
+    buffer+=keyBuffer;
   }
   if ( int (key)==10) {
-    output.println("");
-    output.flush();
+    currentFile.println("");
+    currentFile.flush();
   }
 
   else {
-    output.print(key);
+    currentFile.print(key);
   }
 }
 
 void stop() {
-  output.close();
+  currentFile.close();
 }
