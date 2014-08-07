@@ -6,7 +6,7 @@ void setup() {
 
   size(800, 800);
   font = loadFont("SourceCodePro-Regular-24.vlw");
-  data = new String;
+  data = new String();
   
   background(255);
   
